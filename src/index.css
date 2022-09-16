@@ -1,13 +1,117 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.topbar-container {
+  width: 100%;
+  height: 60px;
+  background-color: #fa7070;
+  color: #fbf2cf;
+  display: flex;
+  top: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.topbar-container h3,
+.topbar-container h1 {
+  cursor: pointer;
+}
+
+.topbar-right {
+  display: flex;
+}
+
+.products-container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
+  background-color: #fbf2cf;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: fit-content(1em);
+  gap: 30px;
+  padding: 30px;
+}
+
+.product-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: column;
+  padding: 10px;
+  width: 150px;
+  height: 150px;
+  background-color: #c6ebc5;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.cart-container {
+  display: none;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  background-color: #fa7070;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  overflow-y: scroll;
+}
+
+.show-cart {
+  display: block;
+}
+
+.cart-header {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-header span {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.add-cart {
+  background-color: #a1c298;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.add-cart:hover {
+  border-color: #587051;
+}
+.add-cart:active {
+  transform: scale(0.9);
+}
+
+.cart-item {
+  width: 100%;
+  height: 80px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
