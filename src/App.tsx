@@ -6,14 +6,13 @@ import Products from "./components/Products";
 import CartItems from "./components/CartItems";
 
 //models
-import { products, cartItem } from "./Products.model";
+import { products } from "./Products.model";
 
 const App: React.FC = () => {
   const [showCart, setShowCart] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<products[]>([]);
   const [allProducts, setAllProducts] = useState<products[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
 
   const displayCart = () => {
     setShowCart(true);
@@ -24,7 +23,7 @@ const App: React.FC = () => {
 
   const addProductsToCart: any = async (item: products) => {
     try {
-      const response = await fetch(
+      await fetch(
         "https://6322e861a624bced308168f4.mockapi.io/cartItems", { method: "POST", body: JSON.stringify(item) }
       );
       setCartItems([...cartItems, item])
@@ -54,7 +53,7 @@ const App: React.FC = () => {
       const data = await response.json();
       setAllProducts(data);
     } catch (error) {
-      setIsError(true);
+      console.log(error)
     } finally {
       setIsLoading(false);
     }
