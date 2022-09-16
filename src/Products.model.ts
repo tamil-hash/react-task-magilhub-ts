@@ -1,4 +1,10 @@
 export interface products {
-  id: Number;
+  id: number;
   productName: string;
+}
+
+export interface cartItem {
+  id: number;
+  productName: string;
+  count:number;
 }

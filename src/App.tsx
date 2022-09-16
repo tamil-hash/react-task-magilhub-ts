@@ -6,7 +6,7 @@ import Products from "./components/Products";
 import CartItems from "./components/CartItems";
 
 //models
-import { products } from "./Products.model";
+import { products, cartItem } from "./Products.model";
 
 const App: React.FC = () => {
   const [showCart, setShowCart] = useState<boolean>(false);
@@ -27,8 +27,18 @@ const App: React.FC = () => {
       const response = await fetch(
         "https://6322e861a624bced308168f4.mockapi.io/cartItems", { method: "POST", body: JSON.stringify(item) }
       );
-      console.log(response)
       setCartItems([...cartItems, item])
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const onCartItemDelete: (itemId: number) => void = async (itemId: number) => {
+    try {
+      await fetch(
+        `https://6322e861a624bced308168f4.mockapi.io/cartItems/${itemId}`, { method: "DELETE" }
+      );
+      fetchCartItems()
     } catch (error) {
       console.log(error);
     }
@@ -79,6 +89,7 @@ const App: React.FC = () => {
       <TopBar displayCart={displayCart} cartItemsLength={cartItems.length} />
       <Products addProductsToCart={addProductsToCart} isLoading={isLoading} allProducts={allProducts} />
       <CartItems
+        onCartItemDelete={onCartItemDelete}
         cartItems={cartItems}
         showCart={showCart}
         hideCart={hideCart}

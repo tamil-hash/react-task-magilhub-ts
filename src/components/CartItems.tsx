@@ -4,6 +4,7 @@ import { products } from "../Products.model";
 interface CartItemsProps {
   showCart: boolean;
   cartItems: products[];
+  onCartItemDelete: (itemId: number) => void;
   hideCart: () => void;
 }
 
@@ -19,7 +20,7 @@ const CartItems: React.FC<CartItemsProps> = (props) => {
       <div className="cart-items">
         {props.cartItems.map((item) => (
           <div className="cart-item" key={item.id.toString()} ><h2>{item.productName}</h2>
-            <div className="add-cart">Delete</div>
+            <div className="add-cart" onClick={() => props.onCartItemDelete(item.id)} >Delete</div>
           </div>
         ))}
       </div>
